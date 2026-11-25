@@ -147,3 +147,6 @@ button:focus-visible, a:focus-visible, .grid-item:focus-visible { outline: 3px s
 .profile-bio, .tab-bar{
   display:none;
 }
+.profile-name{
+  flex-direction:column;
+}
