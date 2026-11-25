@@ -36,7 +36,7 @@ API requests include:
 - `offset=<page-offset>`
 - `X-API-Key` when an API key is available
 
-The API key is read from browser `localStorage` under `xapiKey`. If no key is stored, the app currently defaults to `3544` for API requests.
+The API key is read from browser `localStorage` under `xapiKey`.
 
 ## Run Locally
 
