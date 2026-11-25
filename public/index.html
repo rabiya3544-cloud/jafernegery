@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#071416">
   <meta name="color-scheme" content="dark">
   <meta name="description" content="Browse and stream videos posted by Jafer (@jafernegery).">
@@ -21,95 +21,77 @@
   <script src="app.js" defer></script>
 </head>
 <body>
-  <div class="app">
-    <header class="top-bar">
-      <a class="brand" href="/" aria-label="Jafer Explore home">
-        <span class="brand-mark" aria-hidden="true"><i class="fa-solid fa-compass"></i></span>
-        <span>Explore</span>
-      </a>
-      <span class="header-tagline">Video archive</span>
-    </header>
-
-    <main class="main-content">
-      <section class="profile-block" aria-label="Creator profile">
-        <div class="avatar">
-          <img src="IMG_7379.png" alt="Jafer profile photo" onerror="this.hidden=true; this.nextElementSibling.hidden=false">
-          <i class="fa-solid fa-user" aria-hidden="true" hidden></i>
-        </div>
-        <div class="profile-info">
-          <div class="profile-name">
-            <h1 class="nickname">Jafer</h1>
-            <span class="username">@jafernegery</span>
-          </div>
-          <p class="profile-bio">Videos from the Jafer archive</p>
-          <div class="stats-row" aria-label="Profile statistics">
-            <div class="stat"><span class="stat-value">248</span><span class="stat-label">Following</span></div>
-            <div class="stat"><span class="stat-value">97.1K</span><span class="stat-label">Followers</span></div>
-            <div class="stat"><span class="stat-value">1.7M</span><span class="stat-label">Likes</span></div>
-            <div class="stat"><span class="stat-value">1.2K</span><span class="stat-label">Videos</span></div>
-          </div>
-        </div>
-      </section>
-
-      <nav class="tab-bar" role="tablist" aria-label="Video categories">
-        <button class="tab-btn active" id="tab-posts" type="button" data-tab="posts" role="tab" aria-controls="panel-posts" aria-selected="true">
-          <i class="fa-solid fa-table-cells" aria-hidden="true"></i><span>Videos</span>
-        </button>
-        <button class="tab-btn" id="tab-private" type="button" data-tab="private" role="tab" aria-controls="panel-private" aria-selected="false">
-          <i class="fa-solid fa-lock" aria-hidden="true"></i><span>Private</span>
-        </button>
-        <button class="tab-btn" id="tab-reposts" type="button" data-tab="reposts" role="tab" aria-controls="panel-reposts" aria-selected="false">
-          <i class="fa-solid fa-retweet" aria-hidden="true"></i><span>Reposts</span>
-        </button>
-        <button class="tab-btn" id="tab-favorites" type="button" data-tab="favorites" role="tab" aria-controls="panel-favorites" aria-selected="false">
-          <i class="fa-solid fa-star" aria-hidden="true"></i><span>Favorites</span>
-        </button>
-        <button class="tab-btn" id="tab-liked" type="button" data-tab="liked" role="tab" aria-controls="panel-liked" aria-selected="false">
-          <i class="fa-solid fa-heart" aria-hidden="true"></i><span>Liked</span>
-        </button>
-      </nav>
-
-      <div class="tab-panels">
-        <section class="tab-panel active" id="panel-posts" role="tabpanel" aria-labelledby="tab-posts" tabindex="0">
-          <div id="linksGrid" class="grid" aria-live="polite">
-            <div id="gridLoading" class="grid-loading"><span class="spinner" aria-hidden="true"></span><span>Loading videos…</span></div>
-          </div>
-        </section>
-        <section class="tab-panel empty-panel" id="panel-private" role="tabpanel" aria-labelledby="tab-private" tabindex="0" hidden>
-          <div class="empty-state"><i class="fa-solid fa-lock" aria-hidden="true"></i><h2>Private videos</h2><p>There are no private videos available here.</p></div>
-        </section>
-        <section class="tab-panel empty-panel" id="panel-reposts" role="tabpanel" aria-labelledby="tab-reposts" tabindex="0" hidden>
-          <div class="empty-state"><i class="fa-solid fa-retweet" aria-hidden="true"></i><h2>Reposts</h2><p>No reposts to show.</p></div>
-        </section>
-        <section class="tab-panel empty-panel" id="panel-favorites" role="tabpanel" aria-labelledby="tab-favorites" tabindex="0" hidden>
-          <div class="empty-state"><i class="fa-solid fa-star" aria-hidden="true"></i><h2>Favorites</h2><p>No favorites to show.</p></div>
-        </section>
-        <section class="tab-panel empty-panel" id="panel-liked" role="tabpanel" aria-labelledby="tab-liked" tabindex="0" hidden>
-          <div class="empty-state"><i class="fa-solid fa-heart" aria-hidden="true"></i><h2>Liked videos</h2><p>No liked videos to show.</p></div>
-        </section>
-      </div>
-    </main>
-
-    <footer class="site-footer">Videos previously posted on Jafer’s TikTok account.</footer>
-
-    <section id="playerOverlay" class="player-overlay" role="dialog" aria-modal="true" aria-label="Video player" aria-hidden="true" hidden>
-      <div class="player-stage">
-        <video id="playerVideo" playsinline webkit-playsinline preload="metadata" aria-label="Selected video"></video>
-        <div id="playerLoading" class="player-loading" aria-hidden="true"><span class="spinner"></span></div>
-        <div id="playerPauseInd" class="player-pause-ind" aria-hidden="true"><i class="fa-solid fa-pause"></i></div>
-      </div>
-      <div class="player-top">
-        <button id="playerClose" class="player-close" type="button" aria-label="Close video"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
-        <div id="playerTitle" class="player-title">Video</div>
-        <div id="playerSize" class="player-size">—</div>
-      </div>
-      <div class="player-rail" aria-label="Video actions">
-        <button class="rail-btn" id="railLike" type="button" aria-label="Like video"><i class="fa-regular fa-heart" aria-hidden="true"></i><span class="rail-count" id="railLikes">0</span></button>
-        <button class="rail-btn" id="railMute" type="button" aria-label="Mute video"><i class="fa-solid fa-volume-high" aria-hidden="true"></i><span class="sr-only">Mute</span></button>
-        <button class="rail-btn" id="railDownload" type="button" aria-label="Download video"><i class="fa-solid fa-download" aria-hidden="true"></i><span class="sr-only">Download</span></button>
-      </div>
-      <div class="player-meta"><div class="player-author" id="playerAuthor">@jafernegery</div><div class="player-caption" id="playerCaption"></div></div>
-    </section>
-  </div>
+  	<div class="app">
+		<header class="top-bar" hidden>
+			<h1><i class="fa-solid fa-compass"></i> Explore</h1>
+			<button class="icon-btn" aria-label="Cast"> <i class="fa-solid fa-tv"></i> </button>
+		</header>
+		<section class="profile-block">
+			<div class="avatar"> <img src="IMG_7379.png" alt=""> <i class="fa-solid fa-user" hidden></i> </div>
+			<div class="profile-info">
+				<div class="profile-name"> <span class="nickname">Jafer</span> <span class="username">@jafernegery</span> </div>
+				<div class="stats-row">
+					<div class="stat"> <span class="stat-value">248</span> <span class="stat-label">Following</span> </div>
+					<div class="stat"> <span class="stat-value">97.1K</span> <span class="stat-label">Followers</span> </div>
+					<div class="stat"> <span class="stat-value">1.7M</span> <span class="stat-label">Likes</span> </div>
+					<div class="stat"> <span class="stat-value">1.2K</span> <span class="stat-label">Videos</span> </div>
+				</div>
+			</div>
+		</section>
+		<nav class="tab-bar" role="tablist" hidden>
+			<button class="tab-btn active" data-tab="posts" role="tab" aria-selected="true" aria-label="Posts"> <i class="fa-solid fa-table-cells"></i> </button>
+			<button class="tab-btn" data-tab="private" role="tab" aria-selected="false" aria-label="Private"> <i class="fa-solid fa-lock"></i> </button>
+			<button class="tab-btn" data-tab="reposts" role="tab" aria-selected="false" aria-label="Reposts"> <i class="fa-solid fa-retweet"></i> </button>
+			<button class="tab-btn" data-tab="favorites" role="tab" aria-selected="false" aria-label="Favorites"> <i class="fa-solid fa-star"></i> </button>
+			<button class="tab-btn" data-tab="liked" role="tab" aria-selected="false" aria-label="Liked"> <i class="fa-solid fa-heart"></i> </button>
+		</nav>
+		<div class="tab-panels">
+			<section class="tab-panel active" id="panel-posts" role="tabpanel">
+				<div id="linksGrid" class="grid">
+					<div id="gridLoading" class="grid-loading"> <i class="fa-solid fa-circle-notch"></i> <span>Loading videos…</span> </div>
+				</div>
+			</section>
+			<section class="tab-panel" id="panel-private" role="tabpanel">
+				<div id="playerOverlay" class="player-overlay active" role="dialog" aria-modal="true" aria-hidden="false">
+					<div class="player-stage">
+						<video id="playerVideo" playsinline webkit-playsinline preload="metadata"></video>
+						<div id="playerLoading" class="player-loading"> <i class="fa-solid fa-circle-notch"></i> </div>
+						<div id="playerPauseInd" class="player-pause-ind"> <i class="fa-solid fa-play"></i> </div>
+					</div>
+					<div class="player-top">
+						<button id="playerClose" class="player-close" aria-label="Close"> <i class="fa-solid fa-arrow-left"></i> </button>
+						<div id="playerTitle" class="player-title">2025-03-28</div>
+						<div id="playerSize" class="player-size">—</div>
+					</div>
+					<div class="player-rail">
+						<button class="rail-btn" id="railLike" aria-label="Like"> <i class="fa-regular fa-heart"></i> <span class="rail-count" id="railLikes">0</span> </button>
+						<button class="rail-btn" id="railMute" aria-label="Mute"> <i class="fa-solid fa-volume-high"></i> </button>
+						<button class="rail-btn" id="railDownload" aria-label="Download"> <i class="fa-solid fa-download"></i> </button>
+					</div>
+					<div class="player-meta">
+						<div class="player-author" id="playerAuthor">@jafernegery</div>
+						<div class="player-caption" id="playerCaption"></div>
+					</div>
+				</div>
+			</section>
+			<section class="tab-panel" id="panel-reposts" role="tabpanel">
+				<div class="grid"></div>
+			</section>
+			<section class="tab-panel" id="panel-favorites" role="tabpanel">
+				<div class="grid"></div>
+			</section>
+			<section class="tab-panel" id="panel-liked" role="tabpanel">
+				<div class="grid"></div>
+			</section>
+		</div>
+		<nav class="bottom-nav" hidden>
+			<button class="nav-item"> <i class="fa-solid fa-house nav-icon"></i> <span>Home</span> </button>
+			<button id="linksLoadBtn" class="nav-item active"> <i class="fa-solid fa-compass nav-icon"></i> <span>Discover</span> </button>
+			<button id="linksSyncBtn" class="create-btn" aria-label="Create"> <i class="fa-solid fa-plus"></i> </button>
+			<button class="nav-item"> <i class="fa-solid fa-inbox nav-icon"></i> <span>Inbox</span> </button>
+			<a href="downloader.html" class="nav-item"> <i class="fa-solid fa-user nav-icon"></i> <span>Downloader</span> </a>
+		</nav>
+	</div>
+	<div class="bottom-nav">ከተዘጋው የጃፋር ቲክቶክ አካውንት ተፖስተው የነበሩ ቪዲዮዎች</div>
 </body>
 </html>
