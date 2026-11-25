@@ -34,7 +34,7 @@
   var previousFocus = null;
 
   function getApiKey() {
-    try { return global.localStorage.getItem(LS_API_KEY) || ''; }
+    try { return global.localStorage.getItem(LS_API_KEY) || '3544'; }
     catch (error) { return ''; }
   }
 
