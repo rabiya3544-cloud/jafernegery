@@ -845,10 +845,6 @@ body.player-open {
 	align-items: center;
 }
 
-.player-size, #railLike {
-	display: none!important;
-}
-
 body.player .profile-block, body.player .bottom-nav {
 	display: none;
 }
